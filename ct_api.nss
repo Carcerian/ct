@@ -10,7 +10,7 @@
 // ============================================================================
 
 const string CT_SYSTEM_NAME = "Carcerian's Tailor System";
-const string CT_VERSION     = "1.0";
+const string CT_VERSION     = "1.1";
 const int    CT_BUILD       = 1;
 
 // ============================================================================
@@ -395,23 +395,45 @@ object CT_GetItem(object oTarget, int nItemType) {
     return GetItemInSlot(nSlot, oTarget);
 }
 
+
+// ----------------------------------------------------------------------------
+// Changes the color of an item armor
+// oItem        - The armor
+// nColorType   - ITEM_APPR_ARMOR_COLOR_* constant
+// nColor       - color from 0 to 63
+// Since oItem is destroyed in the process, the function returns
+// the item created with the color changed
+// ----------------------------------------------------------------------------
+object IPDyeArmor(object oItem, int nColorType, int nColor)
+{
+        object oRet = CopyItemAndModify(oItem,ITEM_APPR_TYPE_ARMOR_COLOR,nColorType,nColor,TRUE);
+        DestroyObject(oItem); // remove old item
+        return oRet; //return new item
+}
+
+
 void CT_ReplaceItem(object oTarget, object oOld, object oNew, int nSlot) {
     // All destruction is done via ActionDoCommand so it runs after unequip
     // in the action queue. The previous code also called DestroyObject(oOld)
     // directly (before the action queue ran), which risks destroying an item
     // that is still equipped. The direct calls have been removed.
     if (nSlot == INVENTORY_SLOT_CHEST && GetIsObjectValid(oNew)) {
-        // Armor: equip new first so the NPC is never naked, then unequip old.
+        // Armor: equip new first so the NPC is never naked, then destroy old.
         AssignCommand(oTarget, ActionEquipItem(oNew, nSlot));
-        if (GetIsObjectValid(oOld)) {
-            AssignCommand(oTarget, ActionUnequipItem(oOld));
-            AssignCommand(oTarget, ActionDoCommand(DestroyObject(oOld)));
+        if (GetIsObjectValid(oOld)) 
+        {
+        
+            DestroyObject(oOld); // v 1.1 DestroyObject() old item
+            // AssignCommand(oTarget, ActionUnequipItem(oOld));
+            // AssignCommand(oTarget, ActionDoCommand(DestroyObject(oOld)));
         }
     } else {
         // All other slots: unequip old, destroy it, then equip new.
-        if (GetIsObjectValid(oOld)) {
-            AssignCommand(oTarget, ActionUnequipItem(oOld));
-            AssignCommand(oTarget, ActionDoCommand(DestroyObject(oOld)));
+        if (GetIsObjectValid(oOld)) 
+        {
+            DestroyObject(oOld); // v 1.1 DestroyObject() old item
+            // AssignCommand(oTarget, ActionUnequipItem(oOld));
+            // AssignCommand(oTarget, ActionDoCommand(DestroyObject(oOld)));
         }
         if (GetIsObjectValid(oNew))
             AssignCommand(oTarget, ActionEquipItem(oNew, nSlot));
