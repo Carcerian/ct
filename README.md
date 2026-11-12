@@ -14,8 +14,8 @@ Carcerian's Tailor provides a professional, player-friendly system for character
 
 ## Updates
 
-- **v1.1 - Fixed duplicated item drops.
-- **v1.1 - Fixed missing armor Metal 2 color entry.
+- v1.1 - Fixed duplicated item drops.
+- v1.1 - Fixed missing armor Metal 2 color entry.
 
 ## Features
 
