@@ -1,4 +1,4 @@
-# Carcerian's Tailor (CT) v1.0
+# Carcerian's Tailor (CT) v1.1
 
 A comprehensive character customization system for Neverwinter Nights: Enhanced Edition (NWN:EE). Allows players to adjust appearance, colors, and equipment through an intuitive NUI-based interface.
 
@@ -6,11 +6,15 @@ A comprehensive character customization system for Neverwinter Nights: Enhanced 
 
 Carcerian's Tailor provides a professional, player-friendly system for character customization in NWN:EE. Manage appearance parts, body colors, equipment, and visual customization all in one place. Full session management, persistence, and NPC integration.
 
-**Current Status:** v1.0 - Production Ready  
+**Current Status:** v1.1 - Production Ready  
 **Language:** NWScript (100% NWN:EE compatible)  
 **Files:** 24 NSS modules  
 **Functions:** 40+ API functions  
 **Lines of Code:** ~6,000+ (core system)
+
+## Updates
+
+v1.1 - Fixed missing armor Metal 2 entry.
 
 ## Features
 
@@ -575,10 +579,10 @@ Potential additions:
 
 ## License & Attribution
 
-**Carcerian's Tailor (CT) v1.0**  
+**Carcerian's Tailor (CT) v1.1**  
 Created by: Carcerian  
 For: Neverwinter Nights: Enhanced Edition  
-Last Modified: June 3, 2026
+Last Modified: Nov 12, 2026
 
 Professional character customization system with NPC integration and session management. Ready for production use.
 
@@ -591,7 +595,7 @@ Professional character customization system with NPC integration and session man
 
 ---
 
-**Status:** ✓ v1.0 Production Ready  
+**Status:** ✓ v1.1 Production Ready  
 **Compilation:** ✓ All files pass NWN:EE compiler  
 **Testing:** ✓ In-game tested  
 **Documentation:** ✓ Complete

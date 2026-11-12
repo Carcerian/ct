@@ -532,11 +532,15 @@ void CT_BuildMenu(object oPC, int nMenu, int nParams=0) {
 
         case MENU_ARMOR_COLORS: {
             CT_SetNPCLine(oPC, CT_MenuHeader(MENU_ARMOR_COLOR_STR));
-            int i;
+            int i = 1;
             // ITEM_APPR_ARMOR_NUM_COLORS = 6, channels 0-5 only.
-            // Previously looped to i < 7, creating a ghost "Color" entry for channel 6.
-            for (i = 0; i < ITEM_APPR_ARMOR_NUM_COLORS; i++)
-                CT_SetChoice(oPC, i+1, CT_TextColor(CT_ChanLabel(i), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + i);
+            CT_SetChoice(oPC, i++, sSep, MENU_ARMOR_COLORS);
+            CT_SetChoice(oPC, i++, CT_TextColor(CT_ChanLabel(CT_COLOR_CLOTH1), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + CT_COLOR_CLOTH1);
+            CT_SetChoice(oPC, i++, CT_TextColor(CT_ChanLabel(CT_COLOR_CLOTH2), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + CT_COLOR_CLOTH2);
+            CT_SetChoice(oPC, i++, CT_TextColor(CT_ChanLabel(CT_COLOR_LEATHER1), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + CT_COLOR_LEATHER1);
+            CT_SetChoice(oPC, i++, CT_TextColor(CT_ChanLabel(CT_COLOR_LEATHER2), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + CT_COLOR_LEATHER2);
+            CT_SetChoice(oPC, i++, CT_TextColor(CT_ChanLabel(CT_COLOR_METAL1), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + CT_COLOR_METAL1);
+            CT_SetChoice(oPC, i++, CT_TextColor(CT_ChanLabel(CT_COLOR_METAL2), 255, 215, 0), MENU_COLOR, CT_ITEM_ARMOR * 10 + CT_COLOR_METAL2);
             CT_SetChoice(oPC, i++, sSep, MENU_ARMOR_COLORS);
             CT_SetChoice(oPC, i++, CT_TextColor("Copy from my armor", 255, 215, 0), MENU_ARMOR_COLORS, CT_ITEM_ARMOR, FUNC_COPY_DESIGN_FROM_PC);
             CT_SetChoice(oPC, i++, CT_TextColor("Copy to my armor",   255, 215, 0), MENU_ARMOR_COLORS, CT_ITEM_ARMOR, FUNC_COPY_DESIGN_TO_PC);
